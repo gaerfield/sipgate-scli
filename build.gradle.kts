@@ -5,7 +5,7 @@ val kotlinVersion: String by extra
 val springBootVersion: String by extra
 
 buildscript {
-    val kotlinVersion: String by extra { "1.2.10" }
+    val kotlinVersion: String by extra { "1.2.21" }
     val springBootVersion: String by extra { "2.0.0.M2" }
     repositories {
         mavenCentral()
@@ -27,7 +27,7 @@ apply {
 }
 
 plugins {
-    val kotlinVersion = "1.2.10"
+    val kotlinVersion = "1.2.21"
     id("org.jetbrains.kotlin.jvm") version kotlinVersion
     id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 }
@@ -44,9 +44,11 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     compile("com.google.code.gson:gson:2.3.1")
 
-//    compile("org.springframework.security.oauth:spring-security-oauth2:2.2.1")
-//    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+    compile("org.apache.ws.commons.util:ws-commons-util:1.0.2")
+    compile("org.apache.xmlrpc:xmlrpc-client:3.1.3")
+    compile("org.apache.xmlrpc:xmlrpc-common:3.1.3")
+    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
+
     compile("org.springframework:spring-web:5.0.2.RELEASE")
 
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0")
