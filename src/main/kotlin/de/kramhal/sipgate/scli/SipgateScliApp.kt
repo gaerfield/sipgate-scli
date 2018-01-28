@@ -1,11 +1,21 @@
 package de.kramhal.sipgate.scli
 
-import org.springframework.boot.SpringApplication
+import org.springframework.boot.ApplicationArguments
+import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 
 @SpringBootApplication
-class SipgateScliApp
+class SipgateScliApp(val rpcClient: SipgateRpcClient) : ApplicationRunner {
+    override fun run(args: ApplicationArguments?) {
+//        rpcClient.printServerInfosEtc()
+        rpcClient.initiateCall()
+    }
+}
 
 fun main(args: Array<String>) {
-    SpringApplication.run(SipgateScliApp::class.java, *args)
+    SpringApplicationBuilder(SipgateScliApp::class.java)
+            .properties("spring.config.name:sipgate")
+            .build()
+            .run(*args)
 }
